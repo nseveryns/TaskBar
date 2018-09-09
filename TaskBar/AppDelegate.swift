@@ -22,7 +22,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var taskPriorityField: NSLevelIndicatorCell!
     @IBOutlet weak var taskLinkField: NSTextField!
     @IBOutlet weak var taskDateField: NSDatePicker!
+    
+    var array = [Task]() // TODO: Replace this with an ordered list based on priority
    
+    @IBOutlet weak var viewWindow: NSWindow!
+    @IBOutlet weak var viewTitleField: NSTextField!
+    @IBOutlet weak var viewColorField: NSColorWell!
+    
+    @IBAction func viewButtonClick(_ sender: NSButton) {
+        viewWindow.setIsVisible(false)
+    }
+    
+    @IBAction func viewNextButtonClick(_ sender: NSButton) {
+        if (array.count > 0) {
+            array.remove(at: 0)
+        }
+        viewItem(sender)
+    }
+    
     let taskItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
     @IBAction func quitAction(_ sender: Any) {
         NSApplication.shared.terminate(self)
@@ -32,12 +49,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         taskItem.title = "Tasks"
         taskItem.menu = taskMenu
     }
+    
     @IBAction func addItem(_ sender: Any) {
         managerWindow.setIsVisible(true)
     }
+    
+    @IBAction func viewItem(_ sender: NSButton) {
+        viewWindow.setIsVisible(true)
+        let task = array.first
+        if (task != nil) {
+            viewTitleField.stringValue = (task?.name)!
+            return
+        }
+        viewTitleField.stringValue = "No task available."
+    }
+    
     @IBAction func submitTask(_ sender: Any) {
         managerWindow.setIsVisible(false)
         let task = createTask()
+        array.append(task)
         resetManagerWindow()
     }
     

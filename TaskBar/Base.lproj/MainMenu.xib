@@ -20,15 +20,22 @@
                 <outlet property="taskMenu" destination="xka-Db-gXH" id="a8M-0m-o0Y"/>
                 <outlet property="taskPriorityField" destination="fqb-ng-7hg" id="w2g-cp-QUV"/>
                 <outlet property="taskTitleField" destination="0hR-qd-4Be" id="Sqj-As-obu"/>
+                <outlet property="viewColorField" destination="vjh-YG-2mM" id="O4D-Ac-ZZr"/>
+                <outlet property="viewDisplayField" destination="vjh-YG-2mM" id="UyU-KI-sv0"/>
+                <outlet property="viewTitleField" destination="rdh-Li-FXR" id="5zJ-Qb-j8P"/>
+                <outlet property="viewWindow" destination="rsK-J5-k7c" id="u9W-5r-sjp"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="xka-Db-gXH">
             <items>
-                <menuItem title="View Tasks" id="Vhh-c3-eSy">
+                <menuItem title="Get Task" id="Vhh-c3-eSy">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="viewItem:" target="Voe-Tx-rLC" id="wsk-GR-tz4"/>
+                    </connections>
                 </menuItem>
-                <menuItem title="Add Task" id="CGO-Co-qac">
+                <menuItem title="Add Future Task" id="CGO-Co-qac">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="addItem:" target="Voe-Tx-rLC" id="HBq-sE-aOm"/>
@@ -138,6 +145,55 @@
                 </subviews>
             </view>
             <point key="canvasLocation" x="-304" y="-29"/>
+        </window>
+        <window title="Current Task" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="rsK-J5-k7c">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="131" y="158" width="480" height="257"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="9Zj-Dh-mHB">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="257"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjh-YG-2mM">
+                        <rect key="frame" x="-5" y="-10" width="493" height="85"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="color" red="0.055095174343259314" green="0.9623754620552063" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </colorWell>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aqE-I8-8Jz">
+                        <rect key="frame" x="104" y="15" width="124" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Let's Work!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5u9-Y5-GA0">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="viewButtonClick:" target="Voe-Tx-rLC" id="t4O-Eq-FFZ"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-Li-FXR">
+                        <rect key="frame" x="108" y="201" width="267" height="36"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Welp if you see this, something went wrong" id="MWT-y6-kNa">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGw-Ky-UGu">
+                        <rect key="frame" x="255" y="15" width="124" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Next Task" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AC3-ch-yQC">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="viewNextButtonClick:" target="Voe-Tx-rLC" id="Avt-95-oIg"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-376" y="522.5"/>
         </window>
     </objects>
 </document>
